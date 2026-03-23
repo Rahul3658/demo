@@ -1,8 +1,8 @@
-#stage 1
-FROM node:20 as build
+
+FROM node:18-alpine
+WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
-COPY . . 
-RUN npm run build
-expose 8010
-CMD ["node","index.js"]
+COPY . .
+EXPOSE 8090
+CMD ["npm", "start"]
